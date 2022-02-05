@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+  referal-redirect:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+    - ./app/:/var/www/html
+    - ./config/:/etc/apache2/sites-enabled
+    networks:
+      - default
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 173.10.0.0/24
